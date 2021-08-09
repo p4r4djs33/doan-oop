@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script th:src="@{https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
@@ -62,7 +63,7 @@
 </p>
 <div id="form">
     <form action="#" th:action="@{/home/employee/update}" th:object="${employee}" method="post">
-        <fieldset>
+        <fieldset style="margin: 0px 0px -90px 0px">
             <legend style="color: red">Thông tin nhân viên</legend>
             <div id="abbb" style="border:  solid 3px #770000; margin-bottom: 100px ">
             <tr>
@@ -110,10 +111,10 @@
         </fieldset>
     </form>
 </div>
-<button onclick="return createCheckbox()" style="margin-bottom: 100px">Điểm danh</button>
+<button id="button" onclick="return createCheckbox()" style="margin-bottom: 100px">Điểm danh</button>
 <div id="muster" style="height:200px ;overflow-y: scroll" hidden>
 </div>
-<div id="muster2"></div>
+<div id="muster2" hidden></div>
 <div id="footer"  style="height: 70px;">
     <div id="footer1" style="width: 50% ; float: left">
         <ul class="breadcrumb" style="background-color: lightblue">
@@ -153,15 +154,28 @@
         let mm = String(today.getMonth() + 1).padStart(2, '0');
         console.log('=====' + dd);
 
+        Swal.fire({
+            position: 'middle',
+            icon: 'info',
+            title: 'Bạn đã điểm danh thành công, nhấn lưu để cập nhật',
+            width: 600,
+            fontsize: 20,
+            customClass: {
+                popup: 'format-pre'
+            }
+        });
+
+
         $('#muster2').append(`<label for="${dd}">Đã điểm danh ngày ${dd}/${mm}</label>`)
             .append(`<input type="checkbox" id="date1" name="date1" value="${dd}" checked>`)
             .append(`<br>`)
             .append(`Xin hãy nhấn lưu để cập nhật lại ngày điểm danh`);
-
         let count = document.querySelectorAll('input[type="checkbox"]:checked').length;
         console.log(count);
         $('#attendanceDate').val(count);
         $('#attendanceDate').text(count);
+
+        document.getElementById("button").disabled = true;
     }
 </script>
 </body>

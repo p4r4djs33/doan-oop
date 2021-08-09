@@ -43,7 +43,7 @@ public class DishController {
     public String save(Dish dish, RedirectAttributes redirectAttributes) {
 
         dishService.save(dish);
-        redirectAttributes.addFlashAttribute("message", "Created dish successfully!");
+        redirectAttributes.addFlashAttribute("message", "Tạo món mới thành công");
         return "redirect:/dishes";
     }
     @GetMapping("/dishes/{id}/edit")
@@ -69,7 +69,7 @@ public class DishController {
     @PostMapping("/dishes/delete")
     public String delete(Employee employee, RedirectAttributes redirect) {
         dishService.remove(employee.getId());
-        redirect.addFlashAttribute("message", "Delete dish successfully!");
+        redirect.addFlashAttribute("message", "Xóa món thành công");
         return "redirect:/dishes";
     }
     @GetMapping("/dishes/{id}/view")

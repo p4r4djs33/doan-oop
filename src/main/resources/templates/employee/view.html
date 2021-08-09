@@ -131,26 +131,6 @@
 </div>
 
 <script>
-    $(document).ready(function () {
-        let attendanceDate = $('#attendanceDate').val();
-        console.log(attendanceDate);
-        for (let i = 1; i <= attendanceDate; i++) {
-            $('#muster').append(`<label for="${i}">Ngày ${i}</label>`)
-                .append(`<input type="checkbox" id="${i}" name="${i}" value="${i}" checked>`)
-                .append(`<br>`);
-        }
-    });
-
-    function createCheckbox() {
-        let today = new Date();
-        let dd = String(today.getDate()).padStart(2, '0');
-        let mm = String(today.getMonth() + 1).padStart(2, '0');
-        console.log('=====' + dd);
-
-        $('#muster').append(`<label for="${dd}">Ngày ${dd}/${mm}</label>`)
-            .append(`<input type="checkbox" id="date1" name="date1" value="${dd}" checked>`)
-            .append(`<br>`);
-    }
 </script>
 </body>
 </html>

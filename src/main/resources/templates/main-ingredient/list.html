@@ -53,7 +53,7 @@
                     </div>
                 </div></div>
         </div></div></div>
-        <h1>Danh sách nguyên liệu</h1>
+<h3 style="font-size: 30px;margin-top: 10px; margin-left: 80px; color: #770000">Danh sách nguyên liệu</h3>
         <p id="Create">
             <a th:href="@{/home/main-ingredient/create}">
                 <button style="background-color: lightblue ; color: firebrick;height: 30px;">Thêm nguyên liệu mới</button>
@@ -65,7 +65,6 @@
         <table id="ingredients" border="2" style="border: black">
             <thead>
             <tr>
-                <th>ID</th>
                 <th>Tên nguyên liệu</th>
                 <th>Số lượng</th>
                 <th>Ngày nhập nguyên liệu</th>
@@ -77,7 +76,6 @@
             </thead>
             <tbody>
             <tr th:each="row,rowStat : ${ingredients}">
-                <td th:text="${row.getId()}"></td>
                 <td th:text="${row.getName()}"></td>
                 <td th:text="${row.getAmount()}"></td>
                 <td th:text="${row.getDateImport()}"></td>
@@ -93,6 +91,11 @@
                 </a></td>
             </tr>
             </tbody>
+            <div style="font-size: 25px; text-align: center">
+                <a th:href="@{'/home/main-ingredient'(page=${ingredients.number - 1})}" th:if="${ingredients.hasPrevious()}">Trước</a>
+                <span th:text="${ingredients.number + 1}"></span>/<span th:text="${ingredients.totalPages}"></span>
+                <a th:href="@{'/home/main-ingredient'(page=${ingredients.number + 1})}" th:if="${ingredients.hasNext()}">Sau</a>
+            </div>
         </table>
 
         <table id="ingredients2" border="2" style="border: black" hidden>
@@ -115,8 +118,8 @@
         </table>
 
         <br>
-        <a id="downloadLink" onclick="exportF(this)"><button style="background-color: #770000 ; color: #F5F5DC;height: 30px;">In file excel</button></a>
-
+        <a style="padding-bottom: 300px" id="downloadLink" onclick="exportF(this)"><button style="background-color: #770000 ; color: #F5F5DC;height: 30px;">In file excel</button></a>
+        <br>
 
 <div id="footer"  style="height: 70px;">
     <div id="footer1" style="width: 50% ; float: left">

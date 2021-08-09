@@ -4,6 +4,8 @@ import com.example.doanoopkitchenmanage.model.MainIngredient;
 import com.example.doanoopkitchenmanage.repository.MainIngredientRepository;
 import com.example.doanoopkitchenmanage.service.mainIngredient.MainIngredientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -31,5 +33,10 @@ public class MainIngredientServiceImpl implements MainIngredientService {
     @Override
     public void remove(Long id) {
         mainIngredientRepository.deleteById(id);
+    }
+
+    @Override
+    public Page<MainIngredient> findAll(Pageable pageable) {
+        return mainIngredientRepository.findAll(pageable);
     }
 }

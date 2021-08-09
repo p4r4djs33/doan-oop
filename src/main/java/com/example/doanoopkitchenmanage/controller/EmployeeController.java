@@ -37,7 +37,7 @@ public class EmployeeController {
     public String save(Employee employee, RedirectAttributes redirectAttributes) {
         employee.setAttendanceDate((byte) 0);
         employeeService.save(employee);
-        redirectAttributes.addFlashAttribute("message", "Created employee successfully!");
+        redirectAttributes.addFlashAttribute("message", "Tạo nhân viên mới thành công");
         return "redirect:/home/employee";
     }
 
@@ -53,7 +53,7 @@ public class EmployeeController {
     @PostMapping("/home/employee/update")
     public String update(Employee employee, RedirectAttributes redirect) {
         employeeService.save(employee);
-        redirect.addFlashAttribute("message", "Edit employee successfully!");
+        redirect.addFlashAttribute("message", "Sửa nhân viên thành công");
         return "redirect:/home/employee";
     }
 
@@ -68,7 +68,7 @@ public class EmployeeController {
     @PostMapping("/home/employee/delete")
     public String delete(Employee employee, RedirectAttributes redirect) {
         employeeService.remove(employee.getId());
-        redirect.addFlashAttribute("message", "Delete employee successfully!");
+        redirect.addFlashAttribute("message", "Xóa nhân viên thành công");
         return "redirect:/home/employee";
     }
     @GetMapping("/home/employee/{id}/view")

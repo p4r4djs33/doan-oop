@@ -7,6 +7,8 @@ import com.example.doanoopkitchenmanage.model.MainIngredient;
 import com.example.doanoopkitchenmanage.service.employee.EmployeeService;
 import com.example.doanoopkitchenmanage.service.mainIngredient.MainIngredientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,8 +32,8 @@ public class MainIngredientController {
     }
     //-----HOME INGREDIENT
     @GetMapping("/home/main-ingredient")
-    public String index(Model model) {
-        model.addAttribute("ingredients", mainIngredientService.findAll());
+    public String index(Model model, @PageableDefault(size = 10) Pageable pageable) {
+        model.addAttribute("ingredients", mainIngredientService.findAll(pageable));
         return "main-ingredient/list";
     }
     //-----CREATE INGREDIENT
